@@ -1,4 +1,4 @@
-container=document.querySelector(".container");
+let container=document.querySelector(".container");
 
 for(let i=1;i<=16;i++){
 
@@ -14,3 +14,14 @@ for(let i=1;i<=16;i++){
     container.append(row);
 }
 
+square=document.querySelectorAll(".container .row .square ")
+console.log(square);
+
+square.forEach(square => {square.addEventListener("mouseover",()=>{
+
+    
+    square.style.backgroundColor= "gold";
+    console.log(square);
+
+})
+});
