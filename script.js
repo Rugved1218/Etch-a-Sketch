@@ -25,12 +25,11 @@ square.forEach(square => {square.addEventListener("mouseover",()=>{
 })
 });
 }
-
 let container=document.querySelector(".container");
 
 let gridSize=16;
 makeGrid(gridSize);
-
+let originalColor="gold";
 hoverTrail("gold");
 
 let gridSizeEditorBtn=document.getElementById("gridSizeEditorBtn");
@@ -90,25 +89,33 @@ function randomRainbowColor(){
     colorSet=["#9400D3","#4B0082","#0000FF","#00FF00","#FFFF00","#FF7500","#FF0000"]
     function random(){
         value=Math.floor(Math.random()*(colorSet.length))+1;
-        console.log(value);
         return value;
     }
     color=colorSet[random()];
-    console.log(color)
     return color;
 }
 
+let rainbowMode=false;
 rainbowBtn.addEventListener("click",()=>
 {
-square=document.querySelectorAll(".container .row .square ")
+    rainbowMode= !rainbowMode;
+    if(rainbowMode){
 
+        square=document.querySelectorAll(".container .row .square ")
+        square.forEach(square => {square.addEventListener("mouseover",()=>{
+            square.style.backgroundColor= randomRainbowColor();
+        })
+        });
 
-square.forEach(square => {square.addEventListener("mouseover",()=>{
-
-    square.style.backgroundColor= randomRainbowColor();
-
+        rainbowBtn.textContent="Default Mode";
+    }
+    else{
+        rainbowBtn.textContent="Rainbow Mode";
+        hoverTrail(originalColor)
+    }
+    
 })
-});
-})
+
+
 
 
