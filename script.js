@@ -14,13 +14,13 @@ function makeGrid(gridSize){
 }
 }
 
-function hoverTrail(){
+function hoverTrail(color){
 square=document.querySelectorAll(".container .row .square ")
 
 
 square.forEach(square => {square.addEventListener("mouseover",()=>{
 
-    square.style.backgroundColor= "gold";
+    square.style.backgroundColor= color;
 
 })
 });
@@ -31,7 +31,7 @@ let container=document.querySelector(".container");
 let gridSize=16;
 makeGrid(gridSize);
 
-hoverTrail();
+hoverTrail("gold");
 
 let gridSizeEditorBtn=document.getElementById("gridSizeEditorBtn");
 
@@ -56,12 +56,31 @@ gridSizeEditorBtn.addEventListener("click",() =>{
 
 
     })
-
-   hoverTrail();
+   
+   hoverTrail("gold");
 
 })
 
+let eraserBtn=document.querySelector(".Eraser");
 
+let eraserActive=false;
 
+function eraser(){
 
+    eraserBtn.addEventListener("click",()=>{
+        eraserActive= !eraserActive;
+
+    if(eraserActive){
+    hoverTrail("white");
+    eraserBtn.textContent="Draw Mode";
+    }
+
+    else{
+        eraserBtn.textContent="Eraser Mode";
+        hoverTrail("gold");
+    }
+    });
+}
+
+eraser();
 
