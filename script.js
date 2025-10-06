@@ -154,4 +154,33 @@ gridSizeEditorBtn.addEventListener("click",() =>{
 
 })
 
+resetBtn=document.getElementById("resetBtn");
+resetBtn.addEventListener("click",()=>{
+    square=document.querySelectorAll(".container .row .square ")
+
+    square.forEach(square=>square.style.backgroundColor="white")
+    
+    rainbowMode=false;
+    
+    if(rainbowMode){
+
+        
+        square.forEach(square => {square.addEventListener("mouseover",()=>{
+        color=randomRainbowColor();
+        square.style.backgroundColor= color;
+        })
+        });
+
+        rainbowBtn.textContent="Default Mode";
+    }
+    else{
+        rainbowBtn.textContent="Rainbow Mode";
+        hoverTrail(originalColor)
+    }
+        
+    eraserBtn.textContent="Eraser Mode";
+
+    
+})
+
 
