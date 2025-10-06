@@ -1,11 +1,10 @@
-let container=document.querySelector(".container");
-
-for(let i=1;i<=16;i++){
+function makeGrid(gridSize){
+    for(let i=1;i<=gridSize;i++){
 
     let row=document.createElement("div");
     row.setAttribute("class","row");
 
-    for(let column=1;column<=16;column++){
+    for(let column=1;column<=gridSize;column++){
         let square=document.createElement("div");
         square.setAttribute("class","square");
         row.appendChild(square);
@@ -13,15 +12,56 @@ for(let i=1;i<=16;i++){
 
     container.append(row);
 }
+}
 
+function hoverTrail(){
 square=document.querySelectorAll(".container .row .square ")
-console.log(square);
+
 
 square.forEach(square => {square.addEventListener("mouseover",()=>{
 
-    
     square.style.backgroundColor= "gold";
-    console.log(square);
 
 })
 });
+}
+
+let container=document.querySelector(".container");
+
+let gridSize=16;
+makeGrid(gridSize);
+
+hoverTrail();
+
+let gridSizeEditorBtn=document.getElementById("gridSizeEditorBtn");
+
+
+gridSizeEditorBtn.addEventListener("click",() =>{
+
+    let newGridSize=prompt("Enter desired Grid Size",16);
+    container.textContent="";
+
+    makeGrid(newGridSize);
+
+    let originalPadding=50;
+    let originalGridSize=16;
+    let n=((originalGridSize*originalPadding)/newGridSize)+"px";
+    console.log(n);
+
+    square=document.querySelectorAll(".container .row .square ")
+    square.forEach(square=>{
+
+        square.style.height=n;
+        square.style.width=n;
+
+
+    })
+
+   hoverTrail();
+
+})
+
+
+
+
+
