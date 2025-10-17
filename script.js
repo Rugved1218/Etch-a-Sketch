@@ -35,6 +35,8 @@ hoverTrail(originalColor);
 
 let gridSizeEditorBtn=document.getElementById("gridSizeEditorBtn");
 
+let rainbowMode=false;
+
 let eraserBtn=document.querySelector(".Eraser");
 
 let eraserActive=false;
@@ -47,14 +49,20 @@ function eraser(){
     if(eraserActive){
         color="white"
         hoverTrail("white");
-        eraserBtn.textContent="Draw Mode";
+        eraserBtn.textContent="Eraser Mode ON";
+        rainbowBtn.textContent="Rainbow Mode OFF";
     }
 
     else{
-        eraserBtn.textContent="Eraser Mode";
-        hoverTrail(color);
+        eraserBtn.textContent="Eraser Mode OFF";
+        hoverTrail(originalColor);
     }
     });
+
+    if(rainbowMode){
+        rainbowMode=false;
+    }
+
 }
 
 eraser();
@@ -71,7 +79,8 @@ function randomRainbowColor(){
     return color;
 }
 
-let rainbowMode=false;
+rainbowMode=false;
+
 function rainbow(){
     rainbowBtn.addEventListener("click",()=>
     {
@@ -85,14 +94,29 @@ function rainbow(){
             })
             });
 
-            rainbowBtn.textContent="Default Mode";
+            rainbowBtn.textContent="Rainbow Mode ON";
+            eraserBtn.textContent="Eraser Mode OFF";
         }
         else{
-            rainbowBtn.textContent="Rainbow Mode";
+            rainbowBtn.textContent="Rainbow Mode OFF";
             hoverTrail(originalColor)
+        }
+
+        if(eraserActive){
+            eraserActive=false;
+            quare=document.querySelectorAll(".container .row .square ")
+            square.forEach(square => {square.addEventListener("mouseover",()=>{
+                color=randomRainbowColor();
+                square.style.backgroundColor= color;
+            })
+            });
+
+            rainbowBtn.textContent="Rainbow Mode ON";
+            eraserBtn.textContent="Eraser Mode OFF";
         }
         
     });
+
 }
 
 rainbow();
@@ -130,7 +154,6 @@ gridSizeEditorBtn.addEventListener("click",() =>{
 
     })
 
-    rainbowMode=false;
     
     if(rainbowMode){
 
@@ -141,14 +164,14 @@ gridSizeEditorBtn.addEventListener("click",() =>{
         })
         });
 
-        rainbowBtn.textContent="Default Mode";
+        rainbowBtn.textContent="Rainbow Mode OFF";
     }
     else{
-        rainbowBtn.textContent="Rainbow Mode";
+        rainbowBtn.textContent="Rainbow Mode ON";
         hoverTrail(originalColor)
     }
         
-    eraserBtn.textContent="Eraser Mode";
+    
     
    alert("Grid Resized-settings reset to default")
 
@@ -171,16 +194,57 @@ resetBtn.addEventListener("click",()=>{
         })
         });
 
-        rainbowBtn.textContent="Default Mode";
+        rainbowBtn.textContent="Rainbow Mode OFF";
     }
     else{
-        rainbowBtn.textContent="Rainbow Mode";
+        rainbowBtn.textContent="Rainbow Mode ON";
         hoverTrail(originalColor)
     }
         
-    eraserBtn.textContent="Eraser Mode";
+    
+    
 
     
+})
+
+function shade(){
+    square=document.querySelectorAll(".container .row .square ");
+
+    let opacityInc=9/100;;   
+
+    square.forEach(square=>{
+        square.dataset.opacity=10/100;
+    }
+    )
+
+    square.forEach(square => {square.addEventListener("mouseover",()=>{
+        let opacity=parseFloat(square.dataset.opacity);
+        square.style.backgroundColor="black";
+        square.style.opacity=opacity;
+        opacity=opacity+opacityInc;
+        square.dataset.opacity=opacity;
+    })
+    });
+}
+
+let shadeMode=false;
+
+shadeBtn=document.querySelector(".ShadeBtn")
+shadeBtn.addEventListener("click",()=>{
+    
+    shadeMode=!shadeMode;
+
+    if(shadeMode){
+        shadeMode.textContent="Shade mode ON";
+        shade();
+        
+    }
+    else{
+        shadeMode.textContent="Shade mode OFF";
+    }
+    rainbowBtn.textContent="Rainbow Mode OFF";
+    eraserBtn.textContent="Eraser Mode OFF";
+
 })
 
 
