@@ -1,3 +1,5 @@
+//  FUNCTION FOR MAKING GRID 
+
 function makeGrid(gridSize){
     for(let i=1;i<=gridSize;i++){
 
@@ -14,6 +16,8 @@ function makeGrid(gridSize){
 }
 }
 
+
+//  FUNCTION FOR HOVERING TRAIL 
 function hoverTrail(color){
 square=document.querySelectorAll(".container .row .square ")
 
@@ -25,11 +29,14 @@ square.forEach(square => {square.addEventListener("mouseover",()=>{
 })
 });
 }
-let container=document.querySelector(".container");
-let color="gold";
 
-let gridSize=16;
-makeGrid(gridSize);
+
+let container=document.querySelector(".container");
+
+
+//  FUNCTION FOR MAKING ORIGINAL GRID
+let originalGridSize=16;
+makeGrid(originalGridSize);
 let originalColor="gold";
 hoverTrail(originalColor);
 
@@ -37,6 +44,9 @@ let gridSizeEditorBtn=document.getElementById("gridSizeEditorBtn");
 
 let rainbowMode=false;
 
+
+
+//ERASER MODE
 let eraserBtn=document.querySelector(".Eraser");
 
 let eraserActive=false;
@@ -67,6 +77,8 @@ function eraser(){
 
 eraser();
 
+
+//  RAINBOW MODE
 let rainbowBtn=document.querySelector(".RainbowBtn")
 
 function randomRainbowColor(){
@@ -122,9 +134,23 @@ function rainbow(){
 rainbow();
 
 
+//  FUNCTION FOR RESETTING RAINBOW AND ERASER MODE
+function resetRainbowEraserModes(){
+
+   hoverTrail(originalColor)
+   rainbowMode=false;
+   rainbowBtn.textContent="Rainbow Mode OFF";
+
+   eraserActive=false;
+   eraserBtn.textContent="Eraser Mode OFF";
+
+}
+
+
+//  GRID SIZE EDITOR
+let newGridSize;
 gridSizeEditorBtn.addEventListener("click",() =>{
 
-    let newGridSize;
 
     function inputsize(){
         newGridSize=prompt("Enter desired Grid Size",16);
@@ -141,7 +167,6 @@ gridSizeEditorBtn.addEventListener("click",() =>{
     makeGrid(newGridSize);
 
     let originalPadding=50;
-    let originalGridSize=16;
     let n=((originalGridSize*originalPadding)/newGridSize)+"px";
     console.log(n);
 
@@ -153,44 +178,21 @@ gridSizeEditorBtn.addEventListener("click",() =>{
 
 
     })
+    
+   alert("Grid Resized-settings reset to default");
 
-    
-    
-        
-    
-    
-   alert("Grid Resized-settings reset to default")
-
+    resetRainbowEraserModes();
 })
 
+
+//  RESET GRID
 resetBtn=document.getElementById("resetBtn");
 resetBtn.addEventListener("click",()=>{
-    square=document.querySelectorAll(".container .row .square ")
-
-    square.forEach(square=>square.style.backgroundColor="white")
-    
-    rainbowMode=false;
-    
-    if(rainbowMode){
-
-        
-        square.forEach(square => {square.addEventListener("mouseover",()=>{
-        color=randomRainbowColor();
-        square.style.backgroundColor= color;
-        })
-        });
-
-        rainbowBtn.textContent="Rainbow Mode OFF";
-    }
-    else{
-        rainbowBtn.textContent="Rainbow Mode ON";
-        hoverTrail(originalColor)
-    }
-        
-    
-    
-
-    
+    container.textContent="";
+    makeGrid(originalGridSize);
+    resetRainbowEraserModes();
+    hovertrial(originalColor);
+    alert("Grid Reset-settings reset to default")
 })
 
 
