@@ -1,5 +1,9 @@
-.body{
+body{
     background-color:#f8f9fa;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .row{
@@ -18,4 +22,55 @@
     background-color:white;
 }
 
+.mainContainer{
+    background-color:red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+    width:1200px;
+    height:850px;
+    border:10px solid red;
+    border-radius: 50px;
+    
+}
 
+.container{
+    box-sizing: border-box;
+}
+
+.options,
+.modes{
+    margin-top:22px;
+    display: flex;
+    flex-direction: column;
+    margin-left:40px;
+}
+
+.text{
+    font-size:28px;
+    font-weight:600px;
+    font-size:28px;
+    text-align: center;
+    margin-top:20px;
+    margin-bottom:5px;
+}
+
+h1{
+    font-weight:800px;
+    text-align: center;
+    margin-top:-5px;
+}
+
+button{
+    font-size:22px;
+    padding:10px;
+    margin:5px;
+    border-radius:100px;
+    box-sizing: border-box;
+    width:250px;
+}
+
+.modes button{
+    margin-left:-40px;
+}
