@@ -155,21 +155,7 @@ gridSizeEditorBtn.addEventListener("click",() =>{
     })
 
     
-    if(rainbowMode){
-
-        square=document.querySelectorAll(".container .row .square ")
-        square.forEach(square => {square.addEventListener("mouseover",()=>{
-        color=randomRainbowColor();
-        square.style.backgroundColor= color;
-        })
-        });
-
-        rainbowBtn.textContent="Rainbow Mode OFF";
-    }
-    else{
-        rainbowBtn.textContent="Rainbow Mode ON";
-        hoverTrail(originalColor)
-    }
+    
         
     
     
@@ -207,44 +193,5 @@ resetBtn.addEventListener("click",()=>{
     
 })
 
-function shade(){
-    square=document.querySelectorAll(".container .row .square ");
-
-    let opacityInc=9/100;;   
-
-    square.forEach(square=>{
-        square.dataset.opacity=10/100;
-    }
-    )
-
-    square.forEach(square => {square.addEventListener("mouseover",()=>{
-        let opacity=parseFloat(square.dataset.opacity);
-        square.style.backgroundColor="black";
-        square.style.opacity=opacity;
-        opacity=opacity+opacityInc;
-        square.dataset.opacity=opacity;
-    })
-    });
-}
-
-let shadeMode=false;
-
-shadeBtn=document.querySelector(".ShadeBtn")
-shadeBtn.addEventListener("click",()=>{
-    
-    shadeMode=!shadeMode;
-
-    if(shadeMode){
-        shadeMode.textContent="Shade mode ON";
-        shade();
-        
-    }
-    else{
-        shadeMode.textContent="Shade mode OFF";
-    }
-    rainbowBtn.textContent="Rainbow Mode OFF";
-    eraserBtn.textContent="Eraser Mode OFF";
-
-})
 
 
