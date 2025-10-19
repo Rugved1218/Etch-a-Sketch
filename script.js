@@ -84,7 +84,7 @@ let rainbowBtn=document.querySelector(".RainbowBtn")
 function randomRainbowColor(){
     colorSet=["#9400D3","#4B0082","#0000FF","#00FF00","#FFFF00","#FF7500","#FF0000"]
     function random(){
-        value=Math.floor(Math.random()*(colorSet.length))+1;
+        value=Math.floor(Math.random()*(colorSet.length-1))+1;
         return value;
     }
     color=colorSet[random()];
