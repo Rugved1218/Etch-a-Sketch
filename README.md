@@ -22,12 +22,13 @@ A fun web-based sketch pad where users can draw by hovering their mouse over the
 - **Tools:** VS Code, Chrome DevTools
 
 ## 🚀 Live Demo:
-- [Visit Website]()
+[Visit Website]()
 
 
 ## 👨‍💻Author:
 Rugved Bajare
 - [Github Profile](https://github.com/Rugved1218)
+- [Linkedin Profile](https://www.linkedin.com/in/rugved-bajare/)
 
 ## 📫 Contact
 Feel free to reach out for collaboration or feedback!
