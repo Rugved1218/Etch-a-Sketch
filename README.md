@@ -22,8 +22,7 @@ A fun web-based sketch pad where users can draw by hovering their mouse over the
 - **Tools:** VS Code, Chrome DevTools
 
 ## 🚀 Live Demo:
-[Visit Website]()
-
+[Visit Website](https://rugved1218.github.io/Etch-a-Sketch/)
 
 ## 👨‍💻Author:
 Rugved Bajare
